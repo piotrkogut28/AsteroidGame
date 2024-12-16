@@ -6,6 +6,7 @@ import asteroidfield
 from circleshape import CircleShape
 import sys
 from shot import Shot
+import math
 def main():
     
     updatable = pygame.sprite.Group()
@@ -48,8 +49,13 @@ def main():
 
         for asteroid in asteroids:
             if asteroid.isColliding(player1):
-                
-                sys.exit("Game over!")
+                print("Game over!")
+                print(f"Zniszczyłeś: {Asteroid.Asteroids_destroyed} asteroid!")
+                print(f"Wystrzeliłeś: {Shot.shots_counter} naboi!")
+                czas = pygame.time.get_ticks()/1000
+                print(f"Przetrwałeś {round(czas,1)} sekund!")
+                sys.exit()
+
             for shot in shots:
                 if asteroid.isColliding(shot):
                     asteroid.split()

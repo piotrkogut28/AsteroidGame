@@ -5,7 +5,7 @@ import random
 
 
 class Asteroid(circleshape.CircleShape):
-
+    Asteroids_destroyed = 0
     def __init__(self, x, y, radius):
           super().__init__(x,y,radius)
     
@@ -20,6 +20,7 @@ class Asteroid(circleshape.CircleShape):
     def split(self):
         self.kill()
         if self.radius<=ASTEROID_MIN_RADIUS:
+            Asteroid.Asteroids_destroyed += 1
               
             return
         else:
